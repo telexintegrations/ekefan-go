@@ -13,7 +13,7 @@ type Config struct {
 	TelexChanID string `json:"telex_channel_id"`
 }
 
-const serverURL = "https://ekefan-go.onrender.com"
+const serverURL = "https://ekefan-go.onrender.com/error-log"
 
 // GinAPM creates middleware to capture errors and send them to the APM server
 func GinAPM(config Config) gin.HandlerFunc {
