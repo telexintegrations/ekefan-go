@@ -1,7 +1,6 @@
 # Ekefan-go A Telex Gin APM
 
 ```mermaid
-graph TD
 graph LR
     subgraph Telex-APM Communication
         Telex-Channel[Telex-Channel] --> |cron job Post /tick| APM-SERVER
