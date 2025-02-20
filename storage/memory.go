@@ -3,6 +3,7 @@ package storage
 import (
 	"context"
 	"errors"
+	"log/slog"
 	"sync"
 
 	"github.com/telexintegrations/ekefan-go/model"
@@ -67,7 +68,10 @@ func (m *Memory) WriteErrorLog(ctx context.Context, telexErr *model.TelexErrMsg)
 	if !ok {
 		return ErrTenantIDNotInContext
 	}
-
+	if telexErr == nil {
+		slog.Info("Nil telexErr received but not written")
+		return nil
+	}
 	m.RWMutex.Lock()
 	defer m.RWMutex.Unlock()
 
