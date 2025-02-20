@@ -14,7 +14,7 @@ type Config struct {
 	// TelexChanID - the id of the telex channel where logs pop up
 	TelexChanID string `json:"telex_channel_id"`
 	// ApmServerUrl - the url of the apm server sends logs to telex at intervals
-	// currently: "ttps://ekefan-go.onrender.com/error-log"
+	// currently: "https://ekefan-go.onrender.com/error-log"
 	ApmServerUrl string `json:"apm_server_url"`
 }
 
