@@ -50,7 +50,7 @@ type IntegrationData struct {
 	IsActive            bool                    `json:"is_active"`
 	Output              []IntegrationOutputs    `json:"output"`
 	Author              string                  `json:"author"`
-	KeyFeatures         IntegrationKeyFeatures  `json:"key_features"`
+	KeyFeatures         []string                `json:"key_features"`
 	Permissions         IntegrationPermissions  `json:"permissions"`
 	Settings            []IntegrationSettings   `json:"settings"`
 	TickURL             string                  `json:"tick_url"`

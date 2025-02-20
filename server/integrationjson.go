@@ -25,22 +25,19 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		AppLogo:         "https://i.imgur.com/IZqvffp.png",
 		BackgroundColor: "#fff",
 	}
-	keyfeatures := model.IntegrationKeyFeatures{
-		KeyFeatures: []string{
-			"Log Errors from gin applications",
-		},
-	}
 	settings := []model.IntegrationSettings{
 		// {Label: "channel-id", Type: "text", Required: true, Default: ""},
 		{Label: "interval", Type: "text", Required: true, Default: "* * * * *"},
 	}
 
 	data := model.IntegrationData{
-		Date:                date,
-		Descriptions:        descriptions,
-		IsActive:            true,
-		IntegrationType:     integrationType,
-		KeyFeatures:         keyfeatures,
+		Date:            date,
+		Descriptions:    descriptions,
+		IsActive:        true,
+		IntegrationType: integrationType,
+		KeyFeatures: []string{
+			"Log Errors from gin applications",
+		},
 		IntegrationCategory: integrationCategory,
 		Author:              "<The name of Your Organisation>",
 		Settings:            settings,
