@@ -1,4 +1,4 @@
-# Ekefan-go A Telex Gin APM
+# Ekefan-go Telex Gin APM
 
 ```mermaid
 graph LR
@@ -22,8 +22,8 @@ Ekefan-go Gin APM is a lightweight APM for gin applications used as a [telex int
 To use this APM:
 
 - Follow [telex](https://docs.telex.im/docs/intro) documentation to get started
-- Create your channel and save it channel id. It is very important
-- Instrument your gin application following like this:
+- Create your channel and save the channel id.
+- Instrument your gin application following this guide:
   - import the ekefan-go sdk for the apm:
 
     ```bash
@@ -62,12 +62,12 @@ To use this APM:
         }
     ```
 
-- You are ready to receive error logs to be notified by telex
-- You can always read error logs to ensure no errors from communicating with the apm server
+- You are ready to receive error log notifications through telex
+- You can always console logs to ensure no errors from communicating with the apm server
 
 ### For Manual Testing
 
-- You need golang installed, postman or any api testing client
+- You need [golang installed](https://go.dev/doc/install), postman or any api testing client
 - Follow the [How-to-Guide](#how-to-guide)
 - Run the application:
 
@@ -88,7 +88,7 @@ To use this APM:
     }
     ```
 
-- Your channel should notify you of the error that occured after request /error. Just like this:
+- Your channel should notify you of the error that occured after request. Just like this:
 
 ![alt text](<Screenshot (12).png>)
 
