@@ -17,7 +17,7 @@ const (
 	telexGinEventName   = "Uptime Check"
 	telexGinErrorStatus = "error"
 	jsonAppType         = "application/json"
-	baseUrl             = " https://71c2-102-91-93-147.ngrok-free.app"
+	baseUrl             = "https://ekefan-go.onrender.com"
 	integrationType     = "interval"
 	integrationCategory = "Performance Monitoring"
 )
