@@ -63,11 +63,11 @@ To use this APM:
     ```
 
 - You are ready to receive error log notifications through telex
-- You can always console logs to ensure no errors from communicating with the apm server
+- You can always check console logs to ensure no errors when communicating with the apm server
 
 ### For Manual Testing
 
-- You need [golang installed](https://go.dev/doc/install), postman or any api testing client
+- You need [golang installed](https://go.dev/doc/install) on your machine, postman or any api testing client
 - Follow the [How-to-Guide](#how-to-guide)
 - Run the application:
 
@@ -75,7 +75,7 @@ To use this APM:
   go run main.go
   ```
 
-- Using your api testing client send a get request to `http://localhost:8080/test-error`
+- Using your api testing client, send a get request to `http://localhost:8080/test-error`
 - To mimick telex's tick request, send a post request to `https://ekefan-go.onrender.com/tick` with this payload:
 
     ```json
