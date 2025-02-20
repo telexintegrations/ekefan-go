@@ -33,8 +33,14 @@ func NewServer() *Server {
 	}
 }
 
-func handleCors(w http.ResponseWriter) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+func handleCors(w http.ResponseWriter, r *http.Request) {
+	origin := r.Header.Get("Origin")
+	if origin == "https://telex.im/" {
+		w.Header().Set("Access-Control-Allow-Origin", "https://telex.im/")
+	} else {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+	}
+
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")

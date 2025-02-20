@@ -13,7 +13,7 @@ import (
 // and purges the memory to free up more space
 func (s *Server) TickHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodOptions {
-		handleCors(w)
+		handleCors(w, r)
 		return
 	}
 
