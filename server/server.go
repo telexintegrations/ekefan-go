@@ -14,7 +14,7 @@ import (
 
 const (
 	telexGinUsername    = "ekefan-go Gin APM test"
-	telexGinEventName   = "Uptime Check"
+	telexGinEventName   = "Error Log"
 	telexGinErrorStatus = "error"
 	jsonAppType         = "application/json"
 	baseUrl             = "https://ekefan-go.onrender.com"
