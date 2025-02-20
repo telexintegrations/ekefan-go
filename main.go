@@ -1,14 +1,17 @@
 package main
 
 import (
-	"github.com/telexintegrations/ekefan-go/server"
 	"log/slog"
 	"net/http"
+
+	"github.com/telexintegrations/ekefan-go/server"
+	"github.com/telexintegrations/ekefan-go/storage"
 )
 
 func main() {
 
-	server := server.NewServer()
+	memory := storage.NewStorage()
+	server := server.NewServer(memory)
 	http.HandleFunc("/integration.json", server.IntegrationConfigHandler)
 	http.HandleFunc("/tick", server.TickHandler)
 	http.HandleFunc("/error-log", server.LogError)
