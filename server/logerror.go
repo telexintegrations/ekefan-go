@@ -34,7 +34,9 @@ func (s *Server) LogError(w http.ResponseWriter, r *http.Request) {
 	ctx := storage.WithTenant(context.Background(), payload.TelexChanID)
 
 	for _, errMsg := range payload.Errors {
-		//TODO: if errMsg == "" continue
+		if errMsg == "" {
+			continue
+		}
 		errLog := &model.TelexErrMsg{
 			ErrMsg: errMsg,
 		}

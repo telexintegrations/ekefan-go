@@ -23,13 +23,14 @@ const (
 )
 
 type Server struct {
-	Store storage.Store
+	Store      storage.Store
+	HTTPClient *http.Client
 }
 
-func NewServer() *Server {
-	memory := storage.NewStorage()
+func NewServer(store storage.Store) *Server {
 	return &Server{
-		Store: memory,
+		Store:      store,
+		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 	}
 }
 
@@ -59,7 +60,8 @@ func (s *Server) sendErrorsToTelex(ctx context.Context, payload model.TelexReque
 		return
 	}
 
-	client := http.Client{Timeout: 10 * time.Second}
+	// http.Client{Timeout: 10 * time.Second}
+	client := s.HTTPClient
 
 	for _, errLog := range errLogs {
 		respPayload := model.TelexResponsePayload{
