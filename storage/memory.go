@@ -60,6 +60,7 @@ func (m *Memory) ReadErrorLog(ctx context.Context) ([]*model.TelexErrMsg, error)
 }
 
 // WriteError writes a telexErr a specific tenant, returns nil on success
+// telexErr must not be nil or empty
 func (m *Memory) WriteErrorLog(ctx context.Context, telexErr *model.TelexErrMsg) error {
 	ctxValue := ctx.Value(tenantKey)
 	telexChanID, ok := ctxValue.(string)

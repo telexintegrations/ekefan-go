@@ -23,11 +23,11 @@ const (
 )
 
 type Server struct {
-	Store *storage.Memory
+	Store storage.Store
 }
 
 func NewServer() *Server {
-	memory := storage.NewMemory()
+	memory := storage.NewStorage()
 	return &Server{
 		Store: memory,
 	}

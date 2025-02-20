@@ -20,25 +20,21 @@ type ErrorPayload struct {
 func (s *Server) LogError(w http.ResponseWriter, r *http.Request) {
 	var payload ErrorPayload
 
-	// Decode the request body
 	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
 	}
 
-	// Validate required fields
 	if payload.TelexChanID == "" || len(payload.Errors) == 0 {
 		http.Error(w, "Missing channel ID or errors", http.StatusBadRequest)
 		return
 	}
-
-	// Respond with success
 	w.WriteHeader(http.StatusAccepted)
-	// Create context with tenant ID
+
 	ctx := storage.WithTenant(context.Background(), payload.TelexChanID)
 
-	// Write errors to memory storage
 	for _, errMsg := range payload.Errors {
+		//TODO: if errMsg == "" continue
 		errLog := &model.TelexErrMsg{
 			ErrMsg: errMsg,
 		}
