@@ -3,7 +3,7 @@ package ginamp
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
+	"log/slog"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -40,19 +40,19 @@ func sendErrors(ctx *gin.Context, config Config) {
 
 	jsonData, err := json.Marshal(payload)
 	if err != nil {
-		fmt.Println("Failed to marshal error payload:", err)
+		slog.Error("Failed to marshal error payload", "detail", err.Error())
 		return
 	}
 
 	// Send errors to APM server
 	resp, err := http.Post(config.ApmServerUrl, "application/json", bytes.NewBuffer(jsonData))
 	if err != nil {
-		fmt.Println("Failed to send error log:", err)
+		slog.Error("Failed to send error log", "details", err.Error())
 		return
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusAccepted {
-		fmt.Println("APM server responded with status:", resp.Status)
+		slog.Error("APM server responded", "status", resp.Status)
 	}
 }
