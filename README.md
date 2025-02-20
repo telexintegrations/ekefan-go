@@ -27,7 +27,7 @@ To use this APM:
   - import the ekefan-go sdk for the apm:
 
     ```bash
-    go get -u github.com/telexintegrations/ekefan-go/ginapm@latest
+    go get github.com/telexintegrations/ekefan-go/ginapm@latest
     ```
 
   - Instrument you application using this guide:
