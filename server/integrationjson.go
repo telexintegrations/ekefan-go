@@ -1,0 +1,56 @@
+package server
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+
+	"github.com/telexintegrations/ekefan-go/model"
+)
+
+// IntegrationConfigHandler returns an integration.json response for telex to setup the integration
+func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions {
+		handleCors(w)
+		return
+	}
+	date := model.IntegrationDates{
+		CreatedAt: "2025-02-09",
+		UpdatedAt: "2025-02-09",
+	}
+	descriptions := model.IntegrationDescriptions{
+		AppName:         "ekefan-go GIN APM",
+		AppDescription:  "Reports errors in gin applicaitons, request latency and tracing comming soon",
+		AppURL:          baseUrl,
+		AppLogo:         "https://i.imgur.com/IZqvffp.png",
+		BackgroundColor: "#fff",
+	}
+	keyfeatures := model.IntegrationKeyFeatures{
+		KeyFeatures: []string{
+			"Log Errors from gin applications",
+		},
+	}
+	settings := []model.IntegrationSettings{
+		// {Label: "channel-id", Type: "text", Required: true, Default: ""},
+		{Label: "interval", Type: "text", Required: true, Default: "* * * * *"},
+	}
+
+	data := model.IntegrationData{
+		Date:                date,
+		Descriptions:        descriptions,
+		IsActive:            true,
+		IntegrationType:     integrationType,
+		KeyFeatures:         keyfeatures,
+		IntegrationCategory: integrationCategory,
+		Author:              "<The name of Your Organisation>",
+		Settings:            settings,
+		TickURL:             fmt.Sprintf("%s/tick", baseUrl),
+		TargetURL:           "",
+	}
+	resp := model.IntegrationConfig{
+		Data: data,
+	}
+
+	json.NewEncoder(w).Encode(resp)
+	w.WriteHeader(http.StatusOK)
+}
