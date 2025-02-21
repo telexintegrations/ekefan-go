@@ -12,8 +12,8 @@ import (
 func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request) {
 	handleCors(w, r)
 	date := model.IntegrationDates{
-		CreatedAt: "2025-02-09",
-		UpdatedAt: "2025-02-09",
+		CreatedAt: "2025-02-13",
+		UpdatedAt: "2025-02-21",
 	}
 	descriptions := model.IntegrationDescriptions{
 		AppName:         "ekefan-go GIN APM",

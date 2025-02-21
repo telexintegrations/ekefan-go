@@ -12,10 +12,7 @@ import (
 // sends errors to telex payload channel id
 // and purges the memory to free up more space
 func (s *Server) TickHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodOptions {
-		handleCors(w, r)
-		return
-	}
+	handleCors(w, r)
 
 	var telexPayload model.TelexRequestPayload
 	err := json.NewDecoder(r.Body).Decode(&telexPayload)
