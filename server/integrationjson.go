@@ -23,7 +23,7 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		AppDescription:  "Reports errors in gin applicaitons. Request latency and tracing comming soon",
 		AppURL:          baseUrl,
 		AppLogo:         "https://img.icons8.com/?size=80&id=VUif5Y3XkX2o&format=png",
-		BackgroundColor: "#ffff",
+		BackgroundColor: "#fff",
 	}
 	settings := []model.IntegrationSettings{
 		// {Label: "channel-id", Type: "text", Required: true, Default: ""},
@@ -42,7 +42,7 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		Author:              "Cloud Ekefan",
 		Settings:            settings,
 		TickURL:             fmt.Sprintf("%s/tick", baseUrl),
-		TargetURL:           "\"\"",
+		TargetURL:           "",
 	}
 	resp := model.IntegrationConfig{
 		Data: data,

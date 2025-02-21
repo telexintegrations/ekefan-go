@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"time"
 
@@ -62,12 +63,12 @@ func handleCors(w http.ResponseWriter, r *http.Request) {
 func (s *Server) sendErrorsToTelex(ctx context.Context, payload model.TelexRequestPayload) {
 	errLogs, err := s.Store.ReadErrorLog(ctx)
 	if err != nil {
-		fmt.Printf("failed to read error logs: %v\n", err)
+		slog.Error("failed to read error logs", "details", err.Error())
 		return
 	}
 
 	if len(errLogs) == 0 {
-		fmt.Println("No error logs to report.")
+		slog.Info("No error logs to report.")
 		return
 	}
 
@@ -96,7 +97,7 @@ func (s *Server) sendErrorsToTelex(ctx context.Context, payload model.TelexReque
 		}
 		defer res.Body.Close()
 
-		fmt.Printf("Sent error log: %s, Response status: %s\n", errLog.ErrMsg, res.Status)
+		slog.Info("Sent error log to telex")
 	}
 
 	// Purge logs after processing
