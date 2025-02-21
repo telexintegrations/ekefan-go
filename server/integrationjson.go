@@ -10,10 +10,7 @@ import (
 
 // IntegrationConfigHandler returns an integration.json response for telex to setup the integration
 func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodOptions {
-		handleCors(w, r)
-		return
-	}
+	handleCors(w, r)
 	date := model.IntegrationDates{
 		CreatedAt: "2025-02-09",
 		UpdatedAt: "2025-02-09",
