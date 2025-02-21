@@ -20,10 +20,10 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 	}
 	descriptions := model.IntegrationDescriptions{
 		AppName:         "ekefan-go GIN APM",
-		AppDescription:  "Reports errors in gin applicaitons, request latency and tracing comming soon",
+		AppDescription:  "Reports errors in gin applicaitons. Request latency and tracing comming soon",
 		AppURL:          baseUrl,
-		AppLogo:         "https://i.imgur.com/IZqvffp.png",
-		BackgroundColor: "#fff",
+		AppLogo:         "https://img.icons8.com/?size=80&id=VUif5Y3XkX2o&format=png",
+		BackgroundColor: "#ffff",
 	}
 	settings := []model.IntegrationSettings{
 		// {Label: "channel-id", Type: "text", Required: true, Default: ""},
@@ -36,13 +36,13 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		IsActive:        true,
 		IntegrationType: integrationType,
 		KeyFeatures: []string{
-			"Log Errors from gin applications",
+			"Notify channels subscribed about errors in gin applications",
 		},
 		IntegrationCategory: integrationCategory,
-		Author:              "<The name of Your Organisation>",
+		Author:              "Cloud Ekefan",
 		Settings:            settings,
 		TickURL:             fmt.Sprintf("%s/tick", baseUrl),
-		TargetURL:           "",
+		TargetURL:           "\"\"",
 	}
 	resp := model.IntegrationConfig{
 		Data: data,

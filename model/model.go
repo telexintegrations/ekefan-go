@@ -18,21 +18,21 @@ type IntegrationDates struct {
 }
 
 type IntegrationOutputs struct {
-	Label string `json:"label"`
-	Value bool   `json:"value"`
+	Label string `json:"label,omitempty"`
+	Value bool   `json:"value,omitempty"`
 }
 
 type IntegrationKeyFeatures struct {
 	KeyFeatures []string `json:"key_features"`
 }
 
-type IntegrationPermissions struct {
-	MonitoringUser MonitoringUser `json:"monitoring_user"`
-}
-type MonitoringUser struct {
-	AlwaysOnline bool   `json:"always_online"`
-	DisplayName  string `json:"display_name"`
-}
+// type IntegrationPermissions struct {
+// 	MonitoringUser MonitoringUser `json:"monitoring_user,omitempty"`
+// }
+// type MonitoringUser struct {
+// 	AlwaysOnline bool   `json:"always_online"`
+// 	DisplayName  string `json:"display_name"`
+// }
 
 type IntegrationSettings struct {
 	Label    string   `json:"label"`
@@ -48,13 +48,13 @@ type IntegrationData struct {
 	IntegrationCategory string                  `json:"integration_category"`
 	IntegrationType     string                  `json:"integration_type"`
 	IsActive            bool                    `json:"is_active"`
-	Output              []IntegrationOutputs    `json:"output"`
+	Output              []IntegrationOutputs    `json:"output,omitempty"`
 	Author              string                  `json:"author"`
 	KeyFeatures         []string                `json:"key_features"`
-	Permissions         IntegrationPermissions  `json:"permissions"`
-	Settings            []IntegrationSettings   `json:"settings"`
-	TickURL             string                  `json:"tick_url"`
-	TargetURL           string                  `json:"target_url"`
+	// Permissions         IntegrationPermissions  `json:"permissions,omitempty"`
+	Settings  []IntegrationSettings `json:"settings"`
+	TickURL   string                `json:"tick_url"`
+	TargetURL string                `json:"target_url"`
 }
 
 type TelexRequestPayload struct {
