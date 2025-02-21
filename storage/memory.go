@@ -56,7 +56,7 @@ func (m *Memory) ReadErrorLog(ctx context.Context) ([]*model.TelexErrMsg, error)
 
 	tenant, ok := m.tenants[telexChanID]
 	if !ok {
-		return nil, ErrNotExist
+		return nil, fmt.Errorf("%s, %s", ErrNotExist, telexChanID)
 	}
 	return tenant.ErrLogs, nil
 }
