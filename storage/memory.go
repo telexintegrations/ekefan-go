@@ -3,6 +3,7 @@ package storage
 import (
 	"context"
 	"errors"
+	"fmt"
 	"log/slog"
 	"sync"
 
@@ -50,7 +51,7 @@ func (m *Memory) ReadErrorLog(ctx context.Context) ([]*model.TelexErrMsg, error)
 	ctxValue := ctx.Value(tenantKey)
 	telexChanID, ok := ctxValue.(string)
 	if !ok {
-		return nil, ErrTenantIDNotInContext
+		return nil, fmt.Errorf("%s, %s", ErrTenantIDNotInContext, telexChanID)
 	}
 
 	tenant, ok := m.tenants[telexChanID]
