@@ -36,10 +36,8 @@ func NewServer(store storage.Store) *Server {
 
 func handleCors(w http.ResponseWriter, r *http.Request) {
 	origin := r.Header.Get("Origin")
-	if origin == "https://telex.im/" {
-		w.Header().Set("Access-Control-Allow-Origin", "https://telex.im/")
-	} else {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
+	if origin == "https://telex.im" || origin == "" {
+		w.Header().Set("Access-Control-Allow-Origin", origin)
 	}
 
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
