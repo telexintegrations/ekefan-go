@@ -45,7 +45,7 @@ To use this APM:
         func main() {
             // Intrument your application using the ginapm middleware
             r.Use(ginamp.GinAPM(ginamp.Config{
-                TelexChanID:  "<your-telex-channel-id-where-logs-should-be-sent-to", //01952aac-f22a-7c3a-8803-7407f468829c For telex test telex org.
+                TelexChanID:  "<your-telex-channel-id-where-logs-should-be-sent-to", //01952aac-f22a-7c3a-8803-7407f468829c For telex test org channel.
                 ApmServerUrl: "https://ekefan-go.onrender.com/error-log",
             }))
             // Test route to trigger an error
@@ -82,8 +82,8 @@ To use this APM:
 
     ```json
     {
-        "channel_id": "<your-telex-channel-id-where-logs-should-be-sent-to>",
-        "return_url": "https://ping.telex.im/v1/webhooks/<your-telex-channel-id-where-logs-should-be-sent-to>",
+        "channel_id": "<your-telex-channel-id-where-logs-should-be-sent-to>",//01952aac-f22a-7c3a-8803-7407f468829c For telex test org channel.
+        "return_url": "https://ping.telex.im/v1/webhooks/<your-telex-channel-id-where-logs-should-be-sent-to>", //https://ping.telex.im/v1/webhooks/01952aac-f22a-7c3a-8803-7407f468829c For telex test org channel.
         "settings": [
         {"Label": "interval", "Type": "text", "Required": true, "Default": "* * * * *"}
         ]
