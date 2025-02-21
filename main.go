@@ -16,6 +16,6 @@ func main() {
 	http.HandleFunc("/tick", server.TickHandler)
 	http.HandleFunc("/error-log", server.LogError)
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":808", nil)
 	slog.Error("Error starting ekefan-go gin APM service", "details", err)
 }

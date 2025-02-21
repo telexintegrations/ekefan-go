@@ -35,15 +35,28 @@ func NewServer(store storage.Store) *Server {
 }
 
 func handleCors(w http.ResponseWriter, r *http.Request) {
+	allowedOrigins := map[string]bool{
+		"https://telex.im":            true,
+		"https://staging.telex.im":    true,
+		"http://telextest.im":         true,
+		"http://staging.telextest.im": true,
+	}
+
 	origin := r.Header.Get("Origin")
-	if origin == "https://telex.im" || origin == "" || origin == "https://staging.telex.im" {
+	if allowedOrigins[origin] {
 		w.Header().Set("Access-Control-Allow-Origin", origin)
 	}
 
+	// Set other CORS headers
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Methods", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+	// Only send 200 for preflight OPTIONS requests
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
 }
 
 func (s *Server) sendErrorsToTelex(ctx context.Context, payload model.TelexRequestPayload) {
