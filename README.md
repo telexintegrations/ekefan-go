@@ -21,8 +21,10 @@ Ekefan-go Gin APM is a lightweight APM for gin applications used as a [telex int
 
 To use this APM:
 
+- You need [golang installed](https://go.dev/doc/install) on your machine, postman or any api testing client
 - Follow [telex](https://docs.telex.im/docs/intro) documentation to get started
-- Create your channel and save the channel id.
+- Create your channel **(For telex test org, the name of the channel is #gin-apm)**
+- Get channel Id from Channels webhook configuration (find it here `...webhooks/<this is your channel id>`)
 - Instrument your gin application following this guide:
   - import the ekefan-go sdk for the apm:
 
@@ -43,7 +45,7 @@ To use this APM:
         func main() {
             // Intrument your application using the ginapm middleware
             r.Use(ginamp.GinAPM(ginamp.Config{
-                TelexChanID:  "<your-telex-channel-id-where-logs-should-be-sent-to",
+                TelexChanID:  "<your-telex-channel-id-where-logs-should-be-sent-to", //01952aac-f22a-7c3a-8803-7407f468829c For telex test telex org.
                 ApmServerUrl: "https://ekefan-go.onrender.com/error-log",
             }))
             // Test route to trigger an error
@@ -62,12 +64,12 @@ To use this APM:
         }
     ```
 
-- You are ready to receive error log notifications through telex
-- You can always check console logs to ensure no errors when communicating with the apm server
+- Add **ekefan-go GIN APM** app to your telex organisation to receive error notifications through telex.
+- You are ready to receive error notifications through telex.
+- You can always check console logs of your application to ensure no errors when communicating with the apm server
 
 ### For Manual Testing
 
-- You need [golang installed](https://go.dev/doc/install) on your machine, postman or any api testing client
 - Follow the [How-to-Guide](#how-to-guide)
 - Run the application:
 

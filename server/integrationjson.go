@@ -34,6 +34,7 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		IntegrationType: integrationType,
 		KeyFeatures: []string{
 			"Notify channels subscribed about errors in gin applications",
+			"Check out: https://github.com/telexintegrations/ekefan-go for documentation",
 		},
 		IntegrationCategory: integrationCategory,
 		Author:              "Cloud Ekefan",
