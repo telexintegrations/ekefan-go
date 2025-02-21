@@ -48,6 +48,7 @@ func (s *Server) IntegrationConfigHandler(w http.ResponseWriter, r *http.Request
 		Data: data,
 	}
 
-	json.NewEncoder(w).Encode(resp)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resp)
 }
