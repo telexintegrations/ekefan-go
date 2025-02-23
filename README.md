@@ -25,6 +25,7 @@ To use this APM:
 - Follow [Telex](https://docs.telex.im/docs/intro) documentation to get started
 - Create your channel **(For Telex test org, the name of the channel is #gin-apm)**
 - Get the channel Id from the Channels webhook configuration (find it here `...webhooks/<this is your channel id>`) **...webhooks/01952aac-f22a-7c3a-8803-7407f468829c For gin-apm, Telex test org channel**
+- Configure Apps for the channel and activate `ekefan-go GIN APM`
 - Instrument your Gin application following this guide:
   - Create a folder in your computer /telex-sample
 
@@ -65,7 +66,8 @@ To use this APM:
         r := gin.Default()
         // Intrument your application using the GinAPM middleware
         r.Use(ginapm.GinAPM(ginapm.Config{
-            TelexChanID:  "<your-telex-channel-id-where-logs-should-be-sent-to>", // Example: 01952aac-f22a-7c3a-8803-7407f468829c for Telex test org channel.
+            // TelexChanID should be your own channel ID
+            TelexChanID:  "01952aac-f22a-7c3a-8803-7407f468829c", // Example:gifor Telex test org channel.
             ApmServerUrl: "https://ekefan-go.onrender.com/error-log", // You can pass this through Environment Variables
         }))
         // Test route to trigger an error
