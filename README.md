@@ -130,7 +130,7 @@ To use this APM:
 
 - To ensure the integration works, send a few more requests using your API testing client, to `http://localhost:8080/test-error` but **don't** simulate the request.
 
-- At the set interval telex will notify you of the test errors.
+- At the set interval (1 minute) Telex will notify you of the test errors.
 
 ## Future Upgrades and Features
 
