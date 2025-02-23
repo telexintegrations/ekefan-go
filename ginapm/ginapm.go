@@ -1,4 +1,4 @@
-package ginamp
+package ginapm
 
 import (
 	"bytes"

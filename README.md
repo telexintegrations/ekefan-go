@@ -39,16 +39,16 @@ To use this APM:
     go mod init <the name of your module>
     ```
 
-  - Install the ekefan-go sdk for the apm:
-
-    ```bash
-    go get github.com/telexintegrations/ekefan-go/ginapm@latest
-    ```
-
   - Install the Gin framework for building your application.
 
     ```bash
     go get github.com/gin-gonic/gin
+    ```
+
+  - Install the ekefan-go sdk for the apm:
+
+    ```bash
+    go get github.com/telexintegrations/ekefan-go/ginapm@latest
     ```
 
   - Instrument your application:
