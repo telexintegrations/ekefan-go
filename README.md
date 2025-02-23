@@ -94,6 +94,10 @@ To use this APM:
 
 ![alt text](<Screenshot (12).png>)
 
+- To ensure the integration works, send a few more requests using your api testing client, to `http://localhost:8080/test-error`
+
+- At the set interval telex will notify you of the test errors.
+
 ## Future Upgrades and Features
 
 - Support for multiple channel notifications
