@@ -67,7 +67,7 @@ To use this APM:
         // Intrument your application using the GinAPM middleware
         r.Use(ginapm.GinAPM(ginapm.Config{
             // TelexChanID should be your own channel ID
-            TelexChanID:  "01952aac-f22a-7c3a-8803-7407f468829c", // Example:gifor Telex test org channel.
+            TelexChanID:  "01952aac-f22a-7c3a-8803-7407f468829c", // Example:for Telex test org channel.
             ApmServerUrl: "https://ekefan-go.onrender.com/error-log", // You can pass this through Environment Variables
         }))
         // Test route to trigger an error
