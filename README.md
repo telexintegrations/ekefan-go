@@ -15,7 +15,7 @@ graph LR
     end
 ```
 
-Ekefan-go Gin APM is a lightweight APM for gin applications used as a [telex integration](https://docs.telex.im/docs/Integrations/intro) to notify [telex](https://docs.telex.im/docs/intro) users of errors that occur during requests.
+Ekefan-go Gin APM is a lightweight APM for gin applications used as a [Telex integration](https://docs.telex.im/docs/Integrations/intro) to notify [Telex](https://docs.telex.im/docs/intro) users of errors that occur during requests.
 
 ## Setup Guide
 
@@ -26,7 +26,7 @@ To use this APM:
 - Create your channel **(For Telex test org, the name of the channel is #gin-apm)**
 - Get the channel Id from the Channels webhook configuration (find it here `...webhooks/<this is your channel id>`) **...webhooks/01952aac-f22a-7c3a-8803-7407f468829c For gin-apm, Telex test org channel**
 - Configure Apps for the channel and activate `ekefan-go GIN APM`
-- Instrument your Gin application following this guide:
+- Instrument your Gin application with this as a guide:
   - Create a folder in your computer /telex-sample
 
     ```bash
@@ -53,7 +53,7 @@ To use this APM:
     ```
 
   - Instrument your application:
-    - create a main.go file and instrument it using GinAPM middleware
+    - create a simple web server in a file, main.go and instrument it using GinAPM middleware
 
     ```go
     package main
@@ -137,4 +137,4 @@ To use this APM:
 - Support for multiple channel notifications
 - Speed monitoring support
 - Tracing support
-- Comprehensive APM for Go applications, not just gin.
+- Comprehensive APM for Go applications, not just Gin.
